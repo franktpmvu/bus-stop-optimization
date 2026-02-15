@@ -37,7 +37,7 @@
                     <li><b>使用者便利：</b> 若要最大程度縮短乘客步行距離，則站點必須越密集、離人群越近（目標 B 最小化乘客行走成本）。</li>
                 </ul>
                 <p>
-                    為了在兩個互斥方向中尋找最優解，本模型參考了<b>拉格朗日乘數法（Lagrange Multipliers）</b>的思想。我們將「步行約束」與「營運成本」整合進同一個目標函數中，透過權重 \( w_1, w_2 \) 來模擬不同的決策偏好。
+                    為了在兩個互斥方向中尋找最優解，本模型採用了加權和模型。我們將「步行約束」與「營運成本」整合進同一個目標函數中，透過權重 \( w_1, w_2 \) 來模擬不同的決策偏好。
                 </p>
                 <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #ffeaa7; margin-top: 15px; text-align: center;">
                     <strong>最佳化核心：透過調整權重，在"營運效率"與"行人便利"中間尋找平衡點。</strong>
@@ -46,8 +46,8 @@
         </section>
 
         <section style="margin-bottom: 40px; background: #fdfdfd; padding: 25px; border-radius: 12px; border: 1px solid #eee;">
-            <h2 style="color: #2980b9; border-left: 6px solid #2980b9; padding-left: 15px; margin-bottom: 20px;">(1). 問題建模：圖論與拉格朗日最佳化</h2>
-            <p>本系統將問題建模為最小化<b>拉格朗日函數 (Lagrangian Function)</b> \(L\)，用以平衡營運支出與服務品質：</p>
+            <h2 style="color: #2980b9; border-left: 6px solid #2980b9; padding-left: 15px; margin-bottom: 20px;">(1). 問題建模：圖論與最佳化</h2>
+            <p>本系統將問題建模為最小化<b>加權和函數</b> \(L\)，用以平衡營運支出與服務品質：</p>
             
             <div style="background: #fff; padding: 20px; border-radius: 10px; text-align: center; margin: 25px 0; font-size: 1.3em; border: 2px solid #3498db; color: #2c3e50;">
                 $$L = w_1 \cdot (n \cdot S_{cost} + Dist_{bus} \cdot C_{bus}) + w_2 \cdot \sum dist(p_i, s_{nearest})$$
@@ -292,7 +292,7 @@
             <button onclick="setMode('station')" id="btn-station">🚏 站牌</button>
             <button onclick="resetMap()" style="background:#e74c3c; color:white;">🗑️ 清空</button>
             <button id="btn-run" onclick="triggerOptimization()">🚀 執行運算</button>
-            <button id="btn-auto" onclick="triggerAutoOptimize()" style="background:#9b59b6; color:white; grid-column: span 2; margin-top: 5px; border: none;">🤖 AI 自動選址 (Lagrangian)</button>
+            <button id="btn-auto" onclick="triggerAutoOptimize()" style="background:#9b59b6; color:white; grid-column: span 2; margin-top: 5px; border: none;">🤖 AI 自動選址 (weighted sum)</button>
         </div>
 
         <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
@@ -774,7 +774,7 @@ def run_optimization(event=None):
         output += f"🚶 行人總步行: {ped_total_d:.2f}\n"
         output += f"👟 步行總成本: {ped_walk_cost:.2f} (w2*dist)\n"
         output += f"============================\n"
-        output += f"🚀 總拉格朗日成本: {total_lagrangian:.2f}"
+        output += f"🚀 總加權和成本: {total_lagrangian:.2f}"
         
         document.querySelector("#py-output").innerText = output
         
