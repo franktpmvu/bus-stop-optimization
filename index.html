@@ -27,6 +27,24 @@
 
         <div style="max-width: 1100px; margin: 0 auto;">
             
+        <section style="margin-bottom: 40px; background: #fffdf0; padding: 25px; border-radius: 12px; border: 2px solid #f1c40f;">
+            <h2 style="color: #d35400; border-left: 6px solid #d35400; padding-left: 15px; margin-bottom: 20px;">(0). 建模核心思考：目標衝突與動態平衡</h2>
+            
+            <div style="font-size: 1.05em; line-height: 1.8; color: #444;">
+                <p>在設計城市運輸系統時，我們面臨一個Trade-off</b>：</p>
+                <ul style="margin: 15px 0;">
+                    <li><b>營運方成本：</b> 站點越多、路徑越長，則燃油與維護成本越高（目標 A 最小化營運成本）。</li>
+                    <li><b>使用者便利：</b> 若要最大程度縮短乘客步行距離，則站點必須越密集、離人群越近（目標 B 最小化乘客行走成本）。</li>
+                </ul>
+                <p>
+                    為了在兩個互斥方向中尋找最優解，本模型參考了<b>拉格朗日乘數法（Lagrange Multipliers）</b>的思想。我們將「步行約束」與「營運成本」整合進同一個目標函數中，透過權重 \( w_1, w_2 \) 來模擬不同的決策偏好。
+                </p>
+                <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #ffeaa7; margin-top: 15px; text-align: center;">
+                    <strong>最佳化核心：透過調整權重，在"營運效率"與"行人便利"中間尋找平衡點。</strong>
+                </div>
+            </div>
+        </section>
+
         <section style="margin-bottom: 40px; background: #fdfdfd; padding: 25px; border-radius: 12px; border: 1px solid #eee;">
             <h2 style="color: #2980b9; border-left: 6px solid #2980b9; padding-left: 15px; margin-bottom: 20px;">(1). 問題建模：圖論與拉格朗日最佳化</h2>
             <p>本系統將問題建模為最小化<b>拉格朗日函數 (Lagrangian Function)</b> \(L\)，用以平衡營運支出與服務品質：</p>
