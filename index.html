@@ -194,6 +194,67 @@
 
 
         </section>
+
+        <section style="margin-top: 40px; background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #e1e8ed;">
+            <h2 style="color: #2c3e50; border-left: 6px solid #f39c12; padding-left: 15px; margin-bottom: 20px;">(4). 系統操作指南 (System Manual)</h2>
+
+            <p style="font-size: 0.95em; color: #666;">本模擬系統提供手動配置與 AI 自動化優化兩大模式，使用者可透過控制面板即時調整城市運輸參數。</p>
+
+            <table style="width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em;">
+                <thead>
+                    <tr style="background: #f8f9fa; border-bottom: 2px solid #dee2e6;">
+                        <th style="padding: 12px; text-align: left; width: 30%;">功能按鈕</th>
+                        <th style="padding: 12px; text-align: left;">操作說明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><b>🚫 禁區 (Walls)</b></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">點擊後可在地圖上繪製無法通行的建築物或河流。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><b>👥 乘客 (Passengers)</b></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">點擊後在地圖上標記需求點，作為 AI 選址的參考數據。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><b>🚏 站牌 (Stations)</b></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">手動放置預定站點，系統將自動計算其與起終點的連通路徑。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><b>🧹 清空 (Clear)</b></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">重置地圖，清除所有自定義的站點、乘客與路徑資料。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><b>⚙️ 執行運算 (Run)</b></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">觸發 A* 演算法，根據當前站點序列計算最優導航路徑。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;"><b>🤖 AI 自動選址 (Optimize)</b></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #eee;">啟用智慧優化邏輯，自動根據權重與候選池產出最優站點配置。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 25px; padding: 20px; background: #fff9f0; border-radius: 10px; border: 1px solid #ffeaa7;">
+                <h4 style="margin: 0 0 15px 0; color: #e67e22;">⚖️ 權重動態調整 (Weight Tuning)</h4>
+                <p style="font-size: 0.9em; line-height: 1.6;">
+                    系統提供<b>滑桿 (Bar)</b> 與<b>數值輸入框</b>雙向連動，用於定義「理想運輸模型」的偏好：
+                </p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <div style="flex: 1; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                        <span style="font-weight: bold; color: #2980b9;">Bus Distance (w1)</span>
+                        <p style="font-size: 0.85em; margin: 5px 0;">調高時，系統會優先縮短公車總里程（省油、節省營運時間）。</p>
+                    </div>
+                    <div style="flex: 1; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                        <span style="font-weight: bold; color: #27ae60;">Pedestrian Distance (w2)</span>
+                        <p style="font-size: 0.85em; margin: 5px 0;">調高時，系統會讓站點更靠近乘客（提升便利性、減少步行負擔）。</p>
+                    </div>
+                </div>
+                <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 15px;">
+                    <i>* 註：如需載入預設場景（如 Toy Demo 河流圖），請直接「重新整理」頁面。</i>
+                </p>
+            </div>
+        </section>
             
         </div>
     </div>
